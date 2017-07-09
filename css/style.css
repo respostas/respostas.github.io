@@ -132,7 +132,8 @@ code {
   margin: 0 2px;
   color: #e96900;
   padding: 3px 5px;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   background-color: #f8f8f8;
@@ -195,16 +196,6 @@ code {
     float: left;
     width: 67.6923076923077%;
     margin: 0 0.769230769230769%;
-  }
-}
-@media screen and (min-width: 560px) and (max-width: 799px) {
-  #main {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 559px) {
-  #main {
-    width: 100%;
   }
 }
 .archive-article-header a,
@@ -518,6 +509,7 @@ code {
   padding: 0 30px 0 15px;
   line-height: 40px;
   height: 40px !important;
+  -webkit-border-radius: 21px;
   border-radius: 21px;
 }
 #search-form-wrap .search-form .search-form-input::-webkit-search-results-decoration,
@@ -607,6 +599,7 @@ code {
   margin-right: 15px;
   height: 32px;
   line-height: 32px;
+  -webkit-border-radius: 16px;
   border-radius: 16px;
 }
 @media screen and (max-width: 559px) {
@@ -689,6 +682,7 @@ code {
   text-align: center;
   margin: 20px auto 10px;
   background: #38b7ea;
+  -webkit-border-radius: 20px;
   border-radius: 20px;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
@@ -756,6 +750,7 @@ code {
   padding: 5px 15px;
   position: absolute;
   white-space: nowrap;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   text-transform: uppercase;
   -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
@@ -883,9 +878,6 @@ a.article-title:hover {
 .article-entry:after {
   clear: both;
 }
-.article-entry p {
-  text-align: justify;
-}
 .article-entry p,
 .article-entry table {
   line-height: 1.6em;
@@ -946,7 +938,7 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  position: static;
+  position: relative;
   font-family: Georgia, "Times New Roman", "Microsoft Yahei", serif;
   font-size: 1.1em;
   margin: 0 -20px;
@@ -962,7 +954,7 @@ a.article-title:hover {
   font-size: 32px;
   font-family: FontAwesome;
   text-align: center;
-  position: static;
+  position: absolute;
 }
 .article-entry blockquote footer {
   font-size: 14px;
@@ -970,7 +962,7 @@ a.article-title:hover {
   font-family: "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
-  content: "—";
+  content: "â€”";
   padding: 0 0.5em;
 }
 .article-entry .pullquote {
@@ -1014,6 +1006,7 @@ a.article-title:hover {
   display: inline-block;
   line-height: 1em;
   padding: 6px 15px;
+  -webkit-border-radius: 15px;
   border-radius: 15px;
   background: #f5f8f9;
   color: #999;
@@ -1091,6 +1084,7 @@ a.article-title:hover {
     margin-top: -4px;
     margin-left: -4px;
     content: "";
+    -webkit-border-radius: 50%;
     border-radius: 50%;
     background: #787c81;
   }
@@ -1150,6 +1144,7 @@ a.article-title:hover {
   background: #fff;
   -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
   box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+  -webkit-border-radius: 3px;
   border-radius: 3px;
   margin-left: -145px;
   overflow: hidden;
@@ -1169,6 +1164,7 @@ a.article-title:hover {
   color: #565a5f;
   outline: none;
   border: 1px solid #eceff2;
+  -webkit-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
   height: 36px;
   line-height: 36px;
@@ -1233,44 +1229,25 @@ a.article-title:hover {
   text-shadow: 0 1px #be3221;
 }
 .article-gallery {
-  overflow: hidden;
   background: #000;
   position: relative;
-  text-align: center;
-  margin: 1.6em 0;
 }
-.article-gallery .gallery-item {
+.article-gallery-photos {
+  position: relative;
+  overflow: hidden;
+}
+.article-gallery-img {
   display: none;
   max-width: 100%;
 }
-.article-gallery .gallery-item:before,
-.article-gallery .gallery-item:after {
-  top: 50%;
-  width: 40px;
-  height: 36px;
-  font-size: 36px;
-  line-height: 36px;
-  margin-top: -18px;
-  position: absolute;
-  font-family: FontAwesome;
-  color: rgba(255,255,255,0.5);
-}
-.article-gallery .gallery-item:hover:before,
-.article-gallery .gallery-item:hover:after {
-  color: rgba(255,255,255,0.8);
-}
-.article-gallery .gallery-item:before {
-  left: 0;
-  content: "\f104";
-}
-.article-gallery .gallery-item:after {
-  right: 0;
-  content: "\f105";
-}
-.article-gallery .gallery-item:first-child {
+.article-gallery-img:first-child {
   display: block;
 }
-.article-gallery .gallery-item img {
+.article-gallery-img.loaded {
+  position: absolute;
+  display: block;
+}
+.article-gallery-img img {
   display: block;
   max-width: 100%;
   margin: 0 auto;
@@ -1279,6 +1256,7 @@ a.article-title:hover {
   background: #f9f9f9;
   margin: 2em 0 0 0.2em;
   padding: 1em;
+  -webkit-border-radius: 0px;
   border-radius: 0px;
 }
 .toc-article .toc-title {
@@ -1344,18 +1322,6 @@ ol.toc {
   -moz-transition: color 0.3s ease-out;
   -ms-transition: color 0.3s ease-out;
   transition: color 0.3s ease-out;
-}
-.article.rtl .article-title,
-.article.rtl .article-entry p {
-  direction: rtl;
-}
-.article.rtl .article-meta > div {
-  float: right;
-  margin-left: 10px;
-  margin-right: 0;
-}
-.lg-outer .lg-thumb-item {
-  border-radius: 0 !important;
 }
 #comments {
   padding: 20px;
@@ -1566,6 +1532,7 @@ ol.toc {
   line-height: 32px;
   text-align: center;
   display: inline-block;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 #page-nav a {
@@ -1587,6 +1554,9 @@ ol.toc {
 #page-nav .current {
   color: #565a5f;
   font-weight: bold;
+}
+#page-nav .space {
+  color: #eceff2;
 }
 .timeline-wrap {
   margin: 40px 20px 40px 40px;
@@ -1621,6 +1591,7 @@ ol.toc {
   width: 12px;
   color: #fff;
   height: 12px;
+  -webkit-border-radius: 50%;
   border-radius: 50%;
   margin: 11px 0 0 -8px;
   display: inline-block;
@@ -1850,6 +1821,7 @@ ol.toc {
   line-height: 55px;
   background: #565a5f;
   opacity: 0.8;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
   bottom: 20px;
   position: fixed;
@@ -1990,6 +1962,7 @@ ol.toc {
   -webkit-box-shadow: none;
   box-shadow: none;
   font-weight: 200;
+  -webkit-border-radius: 0;
   border-radius: 0;
   background: #fff;
   line-height: 20px;
